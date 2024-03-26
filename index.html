@@ -1,0 +1,312 @@
+<?php
+session_start();
+
+include("php/config.php");
+if(!isset($_SESSION['StudentID'])){
+header("location: login.php");
+
+}
+
+
+
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <title>mainHome</title>
+</head>
+<style>
+    .content-table{
+        border-collapse: collapse;
+        width: 100%;
+        margin: 25px 0;
+        font-size: 0.9em;
+        
+        
+    }
+    .content-table thead tr{
+        background-color: #009879;
+        color: #ffffff;
+        text-align: left;
+        
+    }
+    .content-table th,
+    .content-table td{
+    }
+    .content-table tbody tr{
+        border: 1px solid black;
+    }
+    .content-table tbody tr:nth-of-type(even){
+        background-color: #f3f3f3;
+    }
+    /* nav */
+    .cc{
+        position: relative;
+        border-radius: 50px;
+        height: 100%;
+        width: 45%;
+        overflow: hidden;
+        display: flex;
+       }
+       #nav{
+        background-color: green;
+       }
+.offcanvas-body{
+    
+    
+}
+ul{
+    text-align: center;
+}
+li{
+    margin: 10px 5px;
+    color: black;
+}
+.offcanvas-body li a{
+transition: 1s ;
+border-radius: 5px;
+font-size: 20px;
+color: black;
+}
+.offcanvas-body a:hover{
+    background-color: green;
+    
+}
+h3{
+    padding: 20px 20px;
+    border-bottom: 1px solid black;
+}
+
+</style>
+<body>
+<nav class="navbar navbar-dark  fixed-top" id="nav" >
+        <div class="container-fluid">
+
+        <?php
+    $StudentID = $_SESSION['StudentID'];
+    $query =  mysqli_query($conn,"SELECT * FROM tbl_studentaccount WHERE StudentID = '$StudentID'");
+    while($result = mysqli_fetch_assoc($query)){
+        $res_StudentID0 = $result['StudentID'];
+        $res_Fullname0 = $result['Fullname'];
+        $res_email0 = $result['Email'];
+        $res_Passsword0= $result['Password'];
+        $res_Address0 = $result['Address'];
+        $res_Contact0 = $result['Contact'];
+        
+
+        
+    }
+    $query =  mysqli_query($conn,"SELECT * FROM stud_subject WHERE StudentID = '$StudentID' AND Subject = 'GE109'");
+    while($result = mysqli_fetch_assoc($query)){
+    
+        
+        $res_Subject1 = $result['Subject'];
+        $res_Unit1 = $result['Unit'];
+        $res_Instructor1 = $result['Instructor'];
+        $res_GPA1= $result['GPA'];
+        $res_Remarks1 = $result['Remarks'];
+    }
+    $query =  mysqli_query($conn,"SELECT * FROM stud_subject WHERE StudentID = '$StudentID' AND Subject = 'GE110'");
+    while($result = mysqli_fetch_assoc($query)){
+     
+        $res_Subject2 = $result['Subject'];
+        $res_Unit2 = $result['Unit'];
+        $res_Instructor2 = $result['Instructor'];
+        $res_GPA2= $result['GPA'];
+        $res_Remarks2 = $result['Remarks'];
+    }
+    $query =  mysqli_query($conn,"SELECT * FROM stud_subject WHERE StudentID = '$StudentID' AND Subject = 'IT103'");
+    while($result = mysqli_fetch_assoc($query)){
+        
+        $res_Subject3 = $result['Subject'];
+        $res_Unit3= $result['Unit'];
+        $res_Instructor3 = $result['Instructor'];
+        $res_GPA3= $result['GPA'];
+        $res_Remarks3 = $result['Remarks'];
+    }
+    $query =  mysqli_query($conn,"SELECT * FROM stud_subject WHERE StudentID = '$StudentID' AND Subject = 'IT104'");
+    while($result = mysqli_fetch_assoc($query)){
+      
+        $res_Subject4 = $result['Subject'];
+        $res_Unit4 = $result['Unit'];
+        $res_Instructor4 = $result['Instructor'];
+        $res_GPA4= $result['GPA'];
+        $res_Remarks4 = $result['Remarks'];
+    }
+    $query =  mysqli_query($conn,"SELECT * FROM stud_subject WHERE StudentID = '$StudentID' AND Subject = 'ELEC3'");
+    while($result = mysqli_fetch_assoc($query)){
+       
+        $res_Subject5= $result['Subject'];
+        $res_Unit5 = $result['Unit'];
+        $res_Instructor5 = $result['Instructor'];
+        $res_GPA5= $result['GPA'];
+        $res_Remarks5 = $result['Remarks'];
+    }
+    $query =  mysqli_query($conn,"SELECT * FROM stud_subject WHERE StudentID = '$StudentID' AND Subject = 'ELEC4'");
+    while($result = mysqli_fetch_assoc($query)){
+       
+        $res_Subject6 = $result['Subject'];
+        $res_Unit6 = $result['Unit'];
+        $res_Instructor6 = $result['Instructor'];
+        $res_GPA6= $result['GPA'];
+        $res_Remarks6 = $result['Remarks'];
+    }
+    $query =  mysqli_query($conn,"SELECT * FROM stud_subject WHERE StudentID = '$StudentID' AND Subject = 'PRAC1'");
+    while($result = mysqli_fetch_assoc($query)){
+        $res_Subject7 = $result['Subject']; 
+        $res_Unit7 = $result['Unit'];
+        $res_Instructor7 = $result['Instructor'];
+        $res_GPA7= $result['GPA'];
+        $res_Remarks7 = $result['Remarks'];
+    }
+    $query =  mysqli_query($conn,"SELECT * FROM stud_subject WHERE StudentID = '$StudentID' AND Subject = 'PE04'");
+    while($result = mysqli_fetch_assoc($query)){
+       
+        $res_Subject8 = $result['Subject'];
+        $res_Unit8 = $result['Unit'];
+        $res_Instructor8 = $result['Instructor'];
+        $res_GPA8= $result['GPA'];
+        $res_Remarks8 = $result['Remarks'];
+    }
+    
+    ?>
+          <a class="navbar-brand" href="#">
+            <div class="cc"><div class="cc"><img src="CRT.png" width="100%" height="100%"></div></div>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel" >
+            <div class="offcanvas-header" style="border-bottom: 1px solid black;">
+              <h2 class="offcanvas-title" id="offcanvasDarkNavbarLabel">
+                <div class="cc"><div class="cc">
+                    <img src="CRT.png" width="100%" height="100%"></div></div>College For Research and Technology</h2>    
+              <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+             <h3><?php echo  $res_Fullname0 ?> </h3>
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 ">
+               
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="mainhome.php" ><span>Home</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="subject.php">Subjects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" style="background-color: green; color: white;">PRELIM</a>
+                  </li>
+            
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+
+    
+       
+       
+  <div class="container" style="position: relative; top: 90px; justify-content: center; align-items: center; text-align: center;">
+      <div class="row">
+        <div class="col-lg-12">
+              <table class="content-table ">
+        <thead>
+        
+            <tr>
+                <th>No.</th>
+                <th>INSTRUCTOR</th>
+                <th>SUBJECTS</th>
+                <th>UNITS</th>
+                <th>PRELIMS</th>
+                <th>GPA</th>
+                <th>REMARK</th>
+                
+                
+
+            </tr>
+        </thead>
+        <tbody>
+            
+            <tr>
+                <td>1.</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>6</td>
+
+                
+            </tr>
+             <tr>
+                <td>1.</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>6</td>
+
+                
+            </tr>
+             <tr>
+                <td>1.</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>6</td>
+
+                
+            </tr>
+            <tr>
+                <td>1.</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>6</td>
+
+                
+            </tr>
+             <tr>
+                <td>1.</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>6</td>
+
+                
+            </tr>
+            <tr>
+                <td>1.</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>6</td>
+                
+            </tr>
+            
+                </tbody>
+    </table>
+</div>
+          </div>
+          
+      </div>
+
+</body>
+</html>
